@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Учебное портфолио Максима Мокеева: айдентика, плакат и обложка.">
+  <meta http-equiv="Content-Security-Policy" content="form-action 'none'; connect-src 'none'; base-uri 'none'">
+  <title>Максим Мокеев — портфолио</title>
+  <style>
+    :root {
+      --paper: #f3f1e9;
+      --ink: #1b1c16;
+      --lime: #dfff40;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 18px/1.5 Arial, sans-serif;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #7e62dc; outline-offset: 5px; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .wrap { width: min(1200px, calc(100% - 64px)); margin-inline: auto; }
+
+    header { border-bottom: 1px solid #ccc9be; }
+    .bar, nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+    }
+    .bar { justify-content: space-between; padding-block: 16px; }
+    nav a, .logo {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+    .logo {
+      justify-content: center;
+      min-width: 52px;
+      background: var(--lime);
+      font-size: 22px;
+      letter-spacing: -.09em;
+    }
+
+    .hero, .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      align-items: center;
+      gap: 36px;
+      padding-block: 64px;
+    }
+    .hero img { aspect-ratio: 1.15; }
+    .label { font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+    h1 {
+      margin: 14px 0 18px;
+      font-size: clamp(65px, 9.5vw, 132px);
+      line-height: .86;
+      letter-spacing: -.075em;
+    }
+    .lead { font-size: clamp(22px, 2.5vw, 30px); line-height: 1.25; }
+    .button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 20px;
+      background: var(--lime);
+      border: 1px solid var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .button:hover { background: white; }
+
+    .about { background: var(--lime); }
+    h2 {
+      margin-top: 10px;
+      font-size: clamp(43px, 6.5vw, 85px);
+      line-height: .95;
+      letter-spacing: -.065em;
+    }
+    .about-text { font-size: clamp(19px, 2vw, 23px); }
+    .about-text p + p { margin-top: 14px; }
+
+    .works { padding-block: 64px; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+    .gallery img { aspect-ratio: 4 / 3; }
+    .gallery h3 { margin-top: 10px; font-size: clamp(22px, 3vw, 32px); line-height: 1.1; }
+    .gallery p { margin-top: 5px; }
+
+    footer { padding-block: 56px 30px; background: var(--ink); color: var(--paper); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    .contacts { display: grid; justify-items: start; gap: 8px; margin-block: 24px; }
+    .contacts a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      color: var(--lime);
+      font-size: clamp(20px, 3vw, 29px);
+      font-weight: 700;
+      text-underline-offset: 5px;
+    }
+    .socials { display: flex; flex-wrap: wrap; gap: 12px; }
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 44px;
+      padding: 6px 12px;
+      border: 1px solid #74766b;
+      text-decoration: none;
+    }
+    .socials a:hover { border-color: var(--lime); }
+    form { display: grid; gap: 8px; }
+    form h3 { font-size: 28px; line-height: 1.2; }
+    form > p { margin-bottom: 8px; }
+    form > label { font-weight: 700; }
+    input:not([type="checkbox"]), textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 6px;
+      border: 1px solid #a7a99d;
+      background: #25271e;
+      color: inherit;
+      font: inherit;
+      border-radius: 0;
+    }
+    textarea { resize: vertical; }
+    .check { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+    .check input { width: 22px; height: 22px; flex: none; accent-color: var(--lime); }
+    form .button { justify-self: start; margin-top: 6px; color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+    #result { color: var(--lime); margin-top: 5px; }
+    .rules { margin-block: 28px; border-top: 1px solid #74766b; }
+    details { border-bottom: 1px solid #74766b; }
+    summary { padding-block: 12px; cursor: pointer; font-weight: 700; }
+    details p { max-width: 74ch; padding-bottom: 14px; }
+    .copyright { border-top: 1px solid #74766b; padding-top: 22px; }
+
+    @media (max-width: 900px) {
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { width: calc(100% - 36px); }
+      .bar { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: space-between; width: 100%; gap: 0 8px; }
+      nav a { font-size: 16px; }
+      .hero, .about-grid { grid-template-columns: 1fr; gap: 24px; padding-block: 40px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(58px, 15vw, 100px); }
+      .hero img { aspect-ratio: 4 / 3; }
+      .works, footer { padding-block: 40px; }
+      .gallery { gap: 22px 14px; }
+      .gallery p { font-size: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header id="home">
+    <div class="wrap bar">
+      <a class="logo" href="#home" aria-label="Максим Мокеев, главная">ММ</a>
+      <nav aria-label="Главное меню">
+        <a href="#home">Главная</a>
+        <a href="#about">Обо мне</a>
+        <a href="#works">Работы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <p class="label">Учебное портфолио</p>
+        <h1>Максим<br>Мокеев</h1>
+        <p class="lead">Айдентика, плакаты и обложки.</p>
+        <a class="button" href="#works">Смотреть работы <span aria-hidden="true">↓</span></a>
+      </div>
+      <img src="forma.webp" alt="Лаймовая обложка каталога «Форма» на рабочем столе">
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div>
+          <p class="label">01 / Обо мне</p>
+          <h2>Пробую себя<br>в дизайне</h2>
+        </div>
+        <div class="about-text">
+          <p>Меня зовут Максим Мокеев. В этой учебной подборке я пробую три формата графического дизайна: фирменный стиль кофейни, афишу музыкального вечера и обложку каталога. У каждого формата своя задача. Стакан должен узнаваться издалека, афиша — привлекать взгляд, а обложка — передавать характер каталога.</p>
+          <p>Для каждого проекта я выбрал свой цвет и один главный графический приём. В галерее собраны сгенерированные макеты, которые показывают, как эти идеи могли бы выглядеть на печатных носителях.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap works" id="works">
+      <p class="label">02 / Портфолио</p>
+      <h2>Три проекта</h2>
+      <div class="gallery">
+        <article>
+          <img src="zerna.webp" alt="Оранжевый стакан с логотипом кофейни «Зёрна»" loading="lazy">
+          <h3>Зёрна</h3>
+          <p>Стиль кофейни</p>
+        </article>
+        <article>
+          <img src="chastota.webp" alt="Фиолетовая афиша «Частота» с концентрическими кругами" loading="lazy">
+          <h3>Частота</h3>
+          <p>Музыкальная афиша</p>
+        </article>
+        <article>
+          <img src="forma.webp" alt="Обложка каталога «Форма» с чёрным геометрическим знаком" loading="lazy">
+          <h3>Форма</h3>
+          <p>Обложка каталога</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <p class="label">03 / Контакты</p>
+          <h2>На связи</h2>
+          <div class="contacts">
+            <a href="mailto:kkandfy@gmail.com">kkandfy@gmail.com</a>
+            <a href="tel:+79111614628">+7 (911) 161-46-28</a>
+          </div>
+          <div class="socials" aria-label="Сайты соцсетей">
+            <a href="https://t.me/">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M2 11.2 21 4c.8-.3 1.2.2 1 1l-3.2 15c-.2.8-.7 1-1.3.5L12.6 17l-2.4 2.3c-.2.2-.4.3-.7.3l.4-5 9.1-8c.4-.4-.1-.4-.5-.2l-11.2 7L2.5 12c-.8-.3-.8-.6-.5-.8Z"/></svg>
+              Telegram
+            </a>
+            <a href="https://vk.com/">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12.8 18C6 18 2.4 13.4 2.2 6h3.5c.1 5.4 2.4 7.7 4.2 8.2V6h3.3v4.7c1.8-.2 3.7-2.3 4.3-4.7h3.3a9 9 0 0 1-4 5.8c1.5.7 3.7 2.6 4.6 6.2H18c-.7-2.3-2.4-4-4.8-4.3V18h-.4Z"/></svg>
+              ВКонтакте
+            </a>
+          </div>
+        </div>
+        <form id="feedback" autocomplete="off">
+          <h3>Тестовая форма</h3>
+          <p>Используйте вымышленные данные. Форма проверяет поля в браузере и не отправляет сообщение.</p>
+          <label for="name">Имя</label>
+          <input id="name" maxlength="80" required>
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="test@example.com" maxlength="254" required>
+          <label for="message">Сообщение</label>
+          <textarea id="message" rows="3" maxlength="1000" required></textarea>
+          <label class="check"><input type="checkbox" required> Согласен на локальную проверку полей</label>
+          <button class="button" type="submit">Проверить форму</button>
+          <p id="result" role="status"></p>
+        </form>
+      </div>
+      <div class="rules">
+        <details>
+          <summary>Конфиденциальность</summary>
+          <p>Владелец сайта — Мокеев Максим Юрьевич. Страница проверяет поля формы в браузере. Она не записывает их значения в хранилище, не отправляет их владельцу или третьим лицам и не устанавливает cookies. Счётчики посещений и внешние виджеты не подключены.</p>
+          <p>При переходе по внешней ссылке применяются правила соответствующего сервиса. По вопросам о работе страницы можно написать на <a href="mailto:kkandfy@gmail.com">kkandfy@gmail.com</a>.</p>
+        </details>
+        <details>
+          <summary>Согласие на локальную проверку полей</summary>
+          <p>Отмечая отдельный флажок, я соглашаюсь на проверку введённых в тестовую форму имени, email и сообщения в моём браузере. Цель — проверить заполнение полей и формат email. Значения очищаются после успешной проверки. До проверки я могу снять флажок или закрыть страницу.</p>
+        </details>
+      </div>
+      <p class="copyright">© Мокеев Максим Юрьевич, 2026</p>
+    </div>
+  </footer>
+  <script>
+    const form = document.querySelector("#feedback");
+    const result = document.querySelector("#result");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      form.reset();
+      result.textContent = "Поля заполнены правильно. Сообщение не отправлено.";
+    });
+
+    form.addEventListener("input", () => {
+      result.textContent = "";
+    });
+  </script>
+</body>
+</html>
+
